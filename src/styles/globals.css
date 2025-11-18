@@ -1,0 +1,123 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-deep;
+  }
+
+  body {
+    @apply bg-concrete text-chrome font-mono;
+    @apply antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-header uppercase;
+  }
+}
+
+@layer components {
+  /* Brutalist Button */
+  .btn-brutalist {
+    @apply px-6 py-3 bg-concrete border-brutalist-medium border-cyber-blue;
+    @apply font-header uppercase tracking-widest text-chrome;
+    @apply shadow-brutalist-button;
+    @apply transition-all duration-100;
+    @apply hover:shadow-brutalist-elevated hover:-translate-y-1;
+    @apply active:translate-y-0 active:shadow-none;
+  }
+
+  .btn-brutalist-primary {
+    @apply btn-brutalist border-cyber-blue;
+    @apply hover:shadow-neon-blue;
+  }
+
+  .btn-brutalist-success {
+    @apply btn-brutalist border-matrix-green;
+    @apply hover:shadow-neon-green;
+  }
+
+  /* Brutalist Card */
+  .card-brutalist {
+    @apply bg-concrete-dark border-brutalist-medium border-chrome;
+    @apply shadow-brutalist-card p-brutalist-lg;
+    @apply relative overflow-hidden;
+  }
+
+  .card-brutalist::before {
+    content: '';
+    @apply absolute inset-0 bg-concrete-texture opacity-50 pointer-events-none;
+  }
+
+  /* Brutalist Input */
+  .input-brutalist {
+    @apply w-full px-4 py-3 bg-concrete-dark;
+    @apply border-brutalist-thin border-chrome;
+    @apply font-mono text-chrome;
+    @apply focus:border-cyber-blue focus:outline-none;
+    @apply focus:shadow-neon-blue;
+    @apply transition-all duration-150;
+  }
+
+  /* Chrome Text Effect */
+  .text-chrome-effect {
+    background: linear-gradient(180deg, #E8E8E8 0%, #A0A0A0 50%, #C0C0C0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Neon Glow Text */
+  .text-neon-blue {
+    @apply text-cyber-blue;
+    text-shadow: 0 0 10px #00FFFF, 0 0 20px #00FFFF, 0 0 30px #00FFFF, 0 0 40px #0080FF;
+  }
+
+  .text-neon-green {
+    @apply text-matrix-green;
+    text-shadow: 0 0 10px #00FF41, 0 0 20px #00FF41, 0 0 30px #00FF41, 0 0 40px #00AA2B;
+  }
+
+  /* Concrete Background */
+  .bg-concrete-brutalist {
+    @apply bg-concrete;
+    background-image: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,.05) 2px, rgba(0,0,0,.05) 4px),
+                      repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(0,0,0,.05) 2px, rgba(0,0,0,.05) 4px);
+    filter: contrast(1.1) brightness(0.95);
+  }
+
+  /* Matrix Rain Background */
+  .bg-matrix-rain {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .bg-matrix-rain::before {
+    content: '01010101';
+    @apply absolute inset-0 text-matrix-green opacity-10 font-mono text-xs;
+    animation: matrix-rain 20s linear infinite;
+    pointer-events: none;
+  }
+}
+
+@layer utilities {
+  .text-shadow-hard {
+    text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.8);
+  }
+
+  .brutalist-grid {
+    display: grid;
+    gap: 24px;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
